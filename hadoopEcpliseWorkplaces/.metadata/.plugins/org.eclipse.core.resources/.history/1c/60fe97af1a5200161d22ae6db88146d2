@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="test">
+	
+	
+	<insert id="insert" parameterType="cn.edu.scau.mybatis1.entity.UserInfo">
+		insert into userinfo(username,age,password)
+		values(#{username},#{age},#{password})
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		delete from userinfo where userid=#{userid}
+	</delete>
+	
+	<select id="findById" parameterType="int" resultType="cn/edu/scau/mybatis1/entity/UserInfo">
+		select * from userinfo where userid = #{value}
+	</select>
+	
+	<update id="update" parameterType="cn.edu.scau.mybatis1.entity.UserInfo">
+		update userinfo set
+			username = #{username},
+			age = #{age},
+			password = #{password}
+		where userid = #{userid}
+	</update>
+
+</mapper>

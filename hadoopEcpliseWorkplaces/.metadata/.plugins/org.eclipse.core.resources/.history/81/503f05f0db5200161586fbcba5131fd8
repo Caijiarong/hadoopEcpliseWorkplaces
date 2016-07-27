@@ -1,0 +1,30 @@
+package cn.edu.scau.spring01.dao;
+
+import cn.edu.scau.spring01.entity.Account;
+
+public class BankDaoImpl implements BankDao {
+	
+	
+	/* (non-Javadoc)
+	 * @see cn.edu.scau.spring01.dao.BankDao#findById(java.lang.String)
+	 */
+	public Account findById(String aid){
+		System.out.println("BankDaoImpl-->findById");
+		Account account = new Account();
+		account.setAid(aid);
+		account.setMoney(10000);
+		account.setStatus(1);
+		
+		return account;
+		
+	}
+	
+	/* (non-Javadoc)
+	 * @see cn.edu.scau.spring01.dao.BankDao#update(cn.edu.scau.spring01.entity.Account, double)
+	 */
+	public boolean update( Account account , double money){
+		System.out.println("BankDaoImpl-->update");
+		return true;
+	}
+
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<context:annotation-config/>
+	
+	<!-- 让Spring通过自动扫描来查询和管理Bean -->
+    <context:component-scan base-package="cn.edu.scau.spring01"/>
+    
+    <bean id="aop" class="cn.edu.scau.spring01.aop.AopDemo" />
+    
+    <aop:config>
+
+		<aop:aspect id="myAspect" ref="aop">
+
+	        <aop:pointcut id="businessService"
+	            expression="execution(* cn.edu.scau.spring01.service..*.*(..))"/>
+	
+	       	<aop:before pointcut-ref="businessService" method="before"/>
+	       	
+	       	<aop:after pointcut-ref="businessService" method="after"/>
+	
+	    </aop:aspect>
+	
+	</aop:config>
+	<!-- 
+	<bean id="bankAction" class="cn.edu.scau.spring01.mvc.BankAction">
+		<property name="age" value="18" />
+	</bean>
+	
+	
+	<bean  name="bankService1" class="cn.edu.scau.spring01.service.BankServiceFactory" factory-method="createInstance">
+	</bean>
+
+	
+	<bean id="bankServiceFactory"
+    class="cn.edu.scau.spring01.service.BankServiceFactory"
+    factory-method="createInstance"/> 
+	
+	<bean name="bankDao" class="cn.edu.scau.spring01.dao.BankDaoImpl">
+		<property name="pro">
+	        <value>
+	            jdbc.driver.className=com.mysql.jdbc.Driver
+	            jdbc.url=jdbc:mysql://localhost:3306/mydb
+	        </value>
+	    </property>
+	</bean>
+
+	 -->
+</beans>

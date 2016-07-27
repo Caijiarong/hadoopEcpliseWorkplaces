@@ -1,0 +1,30 @@
+package cn.edu.scau.mybatis02.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import cn.edu.scau.mybatis02.entity.UserInfo;
+
+public interface UserInfoMapper {
+	
+	/**
+	 * xxxx
+	 * @param userid
+	 * @return
+	 */
+	UserInfo findById(int userid);
+	
+	List<UserInfo> findByIds(List<Integer> list);
+	
+	List<UserInfo> findAll();
+	
+	List<UserInfo> search(@Param("userName") String userName, @Param("email") String email);
+	
+	int insert(UserInfo userInfo);
+	
+	int delete(int userid);
+	
+	int update(UserInfo userInfo);
+
+}
